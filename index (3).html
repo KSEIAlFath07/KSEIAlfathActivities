@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KSEI Al-Fath Story Website</title>
+  <style>
+    /* CSS Variables */
+    :root {
+      --color-bg: #ffffff;
+      --color-text-primary: #111827;
+      --color-text-secondary: #6b7280;
+      --color-primary: #111827;
+      --color-primary-hover: #374151;
+      --border-radius: 0.75rem;
+      --shadow-card: rgba(0, 0, 0, 0.05);
+      --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    /* Reset and base styles */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: var(--font-family-sans);
+      background-color: var(--color-bg);
+      color: var(--color-text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      scroll-behavior: smooth;
+    }
+    a {
+      text-decoration: none;
+      color: var(--color-primary);
+      transition: color 0.3s ease;
+    }
+    a:hover,
+    a:focus {
+      color: var(--color-primary-hover);
+      outline: none;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      background-color: var(--color-bg);
+      border-bottom: 1px solid #e5e7eb;
+      z-index: 1000;
+      box-shadow: 0 1px 5px var(--shadow-card);
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 60px;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.375rem;
+      color: var(--color-primary);
+      user-select: none;
+      letter-spacing: -0.025em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-links a {
+      font-weight: 500;
+      font-size: 1rem;
+      color: var(--color-text-secondary);
+      position: relative;
+      padding-bottom: 2px;
+    }
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 2px;
+      width: 0;
+      background-color: var(--color-primary);
+      transition: width 0.3s ease;
+      border-radius: 2px;
+    }
+    .nav-links a:hover::after,
+    .nav-links a:focus::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding-top: 5rem;
+      padding-bottom: 4rem;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--color-primary);
+    }
+    .hero p {
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 3rem;
+    }
+    .btn-primary {
+      background-color: var(--color-primary);
+      color: #fff;
+      font-weight: 600;
+      font-size: 1.125rem;
+      padding: 0.75rem 2.5rem;
+      border-radius: var(--border-radius);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 10px 15px -3px rgba(17,24,39,0.4);
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    .btn-primary:hover,
+    .btn-primary:focus {
+      background-color: var(--color-primary-hover);
+      transform: scale(1.05);
+      outline: none;
+    }
+
+    /* Sections */
+    section {
+      padding-top: 5rem;
+      padding-bottom: 5rem;
+    }
+    h2.section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 3rem;
+      color: var(--color-primary);
+    }
+
+    /* Feature Cards */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+      gap: 2.5rem;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .feature-card {
+      background-color: #f9fafb;
+      border-radius: var(--border-radius);
+      padding: 2rem;
+      box-shadow: 0 4px 6px var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .feature-card:hover,
+    .feature-card:focus-within {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 15px var(--shadow-card);
+      outline: none;
+    }
+    .feature-card h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-top: 0;
+      margin-bottom: 0.75rem;
+      color: var(--color-primary);
+    }
+    .feature-card p {
+      font-size: 1rem;
+      color: var(--color-text-secondary);
+      margin: 0;
+      user-select: none;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      color: var(--color-text-secondary);
+      border-top: 1px solid #e5e7eb;
+      user-select: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .hero h1 {
+        font-size: 2.75rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container" aria-label="Primary Navigation">
+      <div class="logo" tabindex="0">KSEI Al-Fath'S ACTIVITY</div>
+      <div class="nav-links">
+        <a href="#overview" tabindex="0">Overview</a>
+        <a href="#details" tabindex="0">Details</a>
+        <a href="#summary" tabindex="0">Summary</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero container" role="region" aria-labelledby="hero-title">
+      <h1 id="hero-title">Launching Kajian Keilmuan</h1>
+      <p>
+        Obrolan Seputar Investasi Syariah
+      </p>
+      <button class="btn-primary" onclick="alert('Terima kasih telah mengunjungi!')">Mulai Membaca</button>
+    </section>
+
+    <section id="overview" class="container" role="region" aria-labelledby="overview-title">
+      <h2 class="section-title" id="overview-title">Gambaran Kegiatan</h2>
+      <p style="max-width: 700px; margin-left:auto; margin-right:auto; color: #4b5563; font-weight: 500; font-size: 1rem; text-align:center;">
+        Kegiatan ini adalah sebuah inisiatif organisasi yang berfokus pada membumikan ekonomi islam di masyarakat luas 
+      </p>
+    </section>
+
+    <section id="details" class="container" role="region" aria-labelledby="details-title">
+      <h2 class="section-title" id="details-title">Detail Kegiatan</h2>
+      <div class="features-grid">
+        <p>Kajian umum ini dilaksanakan guna memperkuat pengetahuan dan pemahaman teman-teman tentang relevansi emas sebagai instrumen investasi dalam konteks ekonomi global saat ini dengan tujuan untuk memberikan edukasi kepada peserta tentang investasi yang sesuai syariah</p>
+        </article>
+        <article class="feature-card" tabindex="0" aria-label="Pelaksanaan kegiatan">
+          <h3>Pelaksanaan</h3>
+          <p>Pada Sabtu, 31 Mei 2025.</p>
+        </article>
+
+    <section id="summary" class="container" role="region" aria-labelledby="summary-title">
+      <h2 class="section-title" id="summary-title">Ringkasan kegiatan</h2>
+      <p style="max-width: 700px; margin-left:auto; margin-right:auto; color: #4b5563; font-weight: 500; font-size: 1rem; text-align:center;">
+Divisi Keilmuan FoSSEI Komisariat Jambi, KSEI Al-Fath, dan KSEI Fokus baru saja sukses menyelenggarakan kajian umum bertema “Apakah Emas Masih Relevan? Analisis Syariah atas Tren Investasi Global”.
+Kajian ini bertujuan untuk memperkuat pemahaman masyarakat tentang relevansi emas sebagai instrumen investasi dalam konteks ekonomi global saat ini, khususnya dari perspektif syariah. Mengingat tren investasi yang semakin digital dan spekulatif, acara ini membahas ketentuan syariah terkait jual beli, simpanan, dan kepemilikan emas, baik fisik maupun non-fisik (emas digital dan tabungan emas), serta strategi investasi emas yang sesuai syariah. Hal ini penting mengingat posisi emas sebagai aset stabil yang tahan inflasi dan krisis ekonomi masih belum sepenuhnya dipahami relevansinya dengan prinsip syariah oleh masyarakat umum.
+Kajian yang dilaksanakan secara daring melalui Zoom Meeting pada Sabtu, 31 Mei 2025, ini menghadirkan Ibu Nuha Qonita, Lc., M.Sc. sebagai pemateri dan dimoderatori oleh Muhamad Raykal. 
+Acara ini dihadiri oleh 45 peserta dari berbagai instansi di Indonesia, termasuk pengurus dan anggota FoSSEI Komisariat Jambi, KSEI Al-Fath, KSEI Fokus, serta peserta umum. Kehadiran tokoh-tokoh penting seperti Presiden Nasional FoSSEI Bidang Keilmuan, Koordinator Regional Sumatra Bagian Tengah, Koordinator Komisariat Jambi, Ketua Umum KSEI Al-Fath, dan Direktur Fokus KSEI turut menyemarakkan acara. 
+Kami berharap kajian ini dapat meningkatkan kesadaran dan pengetahuan masyarakat tentang investasi emas yang sesuai syariah, dan kami terbuka terhadap saran serta kritik membangun untuk peningkatan kualitas program kerja di masa mendatang.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2024 KSEI Al-Fath's ACTIVITY. Semua hak dilindungi.
+  </footer>
+</body>
+</html>
+
